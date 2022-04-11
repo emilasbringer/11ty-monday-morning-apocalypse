@@ -2,4 +2,37 @@
 layout: base.njk
 title: Hello World
 ---
+<h1> {{github.login}} </h1>
+<img src="{{ github.avatar_url }}" alt="{{ github.login }}"> 
 
+<h2>Repositories</h2>
+<div id="repos">
+    <div class="spinner-border d-none" role="status"></div>
+    <button>Fetch</button>
+</div>
+
+<script>
+    // https://api.github.com/users/emilasbringer/repos
+    // MDN fetch
+    // 
+    //
+
+    const button = document.querySelector('#repos > button');
+    const spinner = document.querySelector('#repos > .spinner-border');
+    button.addEventListener('click', (e) => {
+        button.classList.toggle('d-none');
+        spinner.classList.toggle('d-none');
+        fetch("https://api.github.com/users/emilasbringer/repos")
+            .then(response => response.json())
+            .then(data => {
+                spinner.classList.toggle('d-none');
+                button.classList.toggle('d-none');
+                const repost = document.querySelector("#repos");
+                data.forEach(repo => {
+                    const p = document.createElement('p');
+                    p.textContent = repo.name;
+                    repos.appendChild(p);
+                });
+            });
+    });
+</script>

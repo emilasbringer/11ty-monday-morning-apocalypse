@@ -1,4 +1,19 @@
 body {
   font-family: sans-serif;
-  background-color: #f9f9f9;
+  background-color: #4a4a4a;
+  //animation: blinkDeath 0.15s infinite linear;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+
+
+@keyframes blinkDeath {
+  0%    { transform: rotate(0deg);}
+  25%   {}
+  50%   {transform: rotate(180deg);}
+  75%   {}
+  100%  {transform: rotate(360deg);}
 }
